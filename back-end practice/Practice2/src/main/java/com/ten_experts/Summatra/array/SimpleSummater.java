@@ -6,8 +6,9 @@ public class SimpleSummater implements IArraySummater {
             throw new ArraySummaterException("Error!Array is empty!");
         }
         int result = 0;
-        for (int i = 0; i < array.length; i++) {
-            result += array[i];
+        for (int element:array
+             ) {
+            result += element;
         }
         return result;
     }
