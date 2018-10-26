@@ -1,34 +1,17 @@
 package it.sevenbits.workshop.DoubleEndedQueue;
-
 import it.sevenbits.workshop.Matrix.Matrix;
 
-import java.util.Arrays;
-
 public class DoubleEndedQueue {
-    private int queueMaxSize;
-    private Node first = new Node(EMPTY_NODE);
-    private Node last = new Node(EMPTY_NODE);
-    private Node zeroNode = new Node(EMPTY_NODE);
+    private Node first = null;
+    private Node last = null;
     public static int RANDOM_NODE = 1;
     public final static int EMPTY_NODE = 0;
 
-    private DoubleEndedQueue(){}
-
-    public DoubleEndedQueue(int queueMaxSize) {
-        this.queueMaxSize = queueMaxSize;
-        zeroNode.SetNext(first);
-        zeroNode.SetPrev(last);
-        first.SetNext(zeroNode);
-        first.SetPrev(zeroNode);
-        last.SetPrev(zeroNode);
-        last.SetNext(zeroNode);
+    public DoubleEndedQueue() {
     }
     public Matrix GetFirst(){
         if (IsEmpty()){
             return null;
-        }
-        else if (first.GetNext() == zeroNode) {
-            return last.GetValue();
         }
         return first.GetValue();
     }
@@ -37,96 +20,87 @@ public class DoubleEndedQueue {
         if (IsEmpty()){
             return null;
         }
-        else if (last.GetPrev() == zeroNode) {
-            return first.GetValue();
-        }
         return last.GetValue();
     }
 
     public void AddFirst(Matrix matrix){
-        Node node = new Node(matrix,zeroNode,zeroNode);
+        Node node = new Node(matrix,null,null);
         if (!IsEmpty()) {
             first.SetPrev(node);
-            if (last.GetPrev() == zeroNode) {
-                first.SetNext(zeroNode);
-                last = first;
-                node.SetNext(last);
-            } else if (first.GetNext() == zeroNode) {
+            if (last.equals(first)) {
                 node.SetNext(last);
                 last.SetPrev(node);
+            } else {
+                node.SetNext(first);
+                first.SetPrev(node);
             }
         }
         else {
-            node.SetNext(last);
+            last = node;
         }
         first = node;
     }
 
     public void AddFirst(int nodeClass) {
         Node node = new Node(nodeClass);
-        node.SetPrev(zeroNode);
-        node.SetNext(zeroNode);
+        node.SetPrev(null);
+        node.SetNext(null);
         if (!IsEmpty()) {
             first.SetPrev(node);
-            if (last.GetPrev() == zeroNode) {
-                first.SetNext(zeroNode);
-                last = first;
-                node.SetNext(last);
-            } else if (first.GetNext() == zeroNode) {
+            if (last.equals(first)) {
                 node.SetNext(last);
                 last.SetPrev(node);
+            } else {
+                node.SetNext(first);
+                first.SetPrev(node);
             }
         }
         else {
-            node.SetNext(last);
+            last = node;
         }
         first = node;
     }
 
     public void AddLast(Matrix matrix){
-        Node node = new Node(matrix,zeroNode,zeroNode);
+        Node node = new Node(matrix,null,null);
         if (!IsEmpty()) {
             last.SetPrev(node);
-            if (last.GetPrev() == zeroNode) {
-                node.SetPrev(first);
+            if (last.equals(first)) {
                 first.SetNext(node);
-            } else if (first.GetNext() == zeroNode) {
-                last.SetPrev(zeroNode);
-                last.SetNext(node);
-                first = last;
                 node.SetPrev(first);
+            } else  {
+                node.SetPrev(last);
+                last.SetNext(node);
             }
         }
         else {
-            node.SetPrev(first);
+            first = node;
         }
         last = node;
     }
 
     public void AddLast(int nodeClass){
         Node node = new Node(nodeClass);
-        node.SetPrev(zeroNode);
-        node.SetNext(zeroNode);
+        node.SetPrev(null);
+        node.SetNext(null);
         if (!IsEmpty()) {
             last.SetPrev(node);
-            if (last.GetPrev() == zeroNode) {
-                node.SetPrev(first);
+            if (last.equals(first)) {
                 first.SetNext(node);
-            } else if (first.GetNext() == zeroNode) {
-                last.SetPrev(zeroNode);
-                last.SetNext(node);
-                first = last;
                 node.SetPrev(first);
+            } else {
+                node.SetPrev(last);
+                last.SetNext(node);
             }
         }
         else {
-            node.SetPrev(first);
+            first = node;
         }
         last = node;
     }
 
     public boolean IsEmpty(){
-        if ((first.GetNext() == zeroNode)&&(last.GetPrev() == zeroNode)) {
+        if ((first == null)&&(last == null)) {
             return true;
         }
         return false;
@@ -135,11 +109,13 @@ public class DoubleEndedQueue {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Queue contain:").append("\n");
-        for (Node current = first; current!=last;current = current.GetNext()) {
-            sb.append(current.toString()).append("\n");
+        sb.append("Queue contain:").append("\n").append("\n");
+        if (!IsEmpty()) {
+            for (Node current = first; current.GetNext() != null; current = current.GetNext()) {
+                sb.append(current.toString()).append("\n");
+            }
+            sb.append(last.toString()).append("\n");
         }
-        sb.append(last.toString());
         sb.append("\n");
         return sb.toString();
     }

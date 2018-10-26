@@ -12,7 +12,7 @@ public class Main {
             colsLen = Integer.parseInt(args[1]);
         }
         Matrix matrix = new Matrix(rowsLen,colsLen);
-        DoubleEndedQueue queue = new DoubleEndedQueue(100);
+        DoubleEndedQueue queue = new DoubleEndedQueue();
         System.out.println(matrix.toString());
         matrix.Inverse();
         System.out.println(matrix.toString());

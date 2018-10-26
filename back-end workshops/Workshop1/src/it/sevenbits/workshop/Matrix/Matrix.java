@@ -36,6 +36,7 @@ public class Matrix {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
+        sb.append("Matrix contain: \n");
         for(int x = 0; x< matrix.length; x++){
             for(int y = 0; y < matrix[x].length; y++){
                 sb.append(matrix[x][y].GetValue()).append(' ');

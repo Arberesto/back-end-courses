@@ -61,7 +61,7 @@ class Node {
     public String toString() {
 
         StringBuilder sb = new StringBuilder();
-        sb.append("node contain: \n");
+        sb.append("Node contain: \n\n");
         if (GetValue() !=null) {
             sb.append(GetValue().toString());
         }
