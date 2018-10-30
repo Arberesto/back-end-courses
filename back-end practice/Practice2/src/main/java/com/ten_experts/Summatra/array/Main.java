@@ -1,6 +1,14 @@
 package com.ten_experts.Summatra.array;
 
+
+/**
+ * Entry point for program
+ */
+
 public class Main {
+    /**
+     *Starting method
+     */
     public static void main(String[] args) {
         PairSummater pairSum = new PairSummater();
         SimpleSummater simpleSum = new SimpleSummater();

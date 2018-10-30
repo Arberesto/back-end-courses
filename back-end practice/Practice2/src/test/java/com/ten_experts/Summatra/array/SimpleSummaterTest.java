@@ -5,21 +5,21 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertArrayEquals;
 
-public class PairSummaterTest {
-    private PairSummater pairSummater;
+public class SimpleSummaterTest {
+    private SimpleSummater simpleSummater;
 
     @Before
     public void setUp() {
-        this.pairSummater = new PairSummater();
+        this.simpleSummater = new SimpleSummater();
     }
 
     @Test
-    public void testPairSummaterNormalSituation1() {
+    public void testSimpleSummaterNormalSituation1() {
         int[] array = {1, 2, 3, 4};
         int[] expectedResultArray = {7};
         int[] resultArray = new int[1];
         try {
-            resultArray[0] = this.pairSummater.sum(array);
+            resultArray[0] = this.simpleSummater.sum(array);
         }
         catch (ArraySummaterException e){
             System.out.println(e.getMessage());
@@ -27,12 +27,12 @@ public class PairSummaterTest {
         assertArrayEquals("Wrong!Should be 7", expectedResultArray,resultArray);
     }
     @Test(expected = ArraySummaterException.class)
-    public void testPairSummaterEvenArraySize() {
+    public void testSimpleSummaterEvenArraySize() {
         int[] array = {1, 2, 3};
         int[] expectedResultArray = {7};
         int[] resultArray = new int[1];
         try {
-            resultArray[0] = this.pairSummater.sum(array);
+            resultArray[0] = this.simpleSummater.sum(array);
         }
         catch (ArraySummaterException e){
             System.out.println(e.getMessage());
@@ -41,12 +41,12 @@ public class PairSummaterTest {
     }
 
     @Test(expected = ArraySummaterException.class)
-    public void testPairSummaterEmptyArray() {
+    public void testSimpleSummaterEmptyArray() {
         int[] array = {};
         int[] expectedResultArray = {0};
         int[] resultArray = new int[1];
         try {
-            resultArray[0] = this.pairSummater.sum(array);
+            resultArray[0] = this.simpleSummater.sum(array);
         }
         catch (ArraySummaterException e){
             System.out.println(e.getMessage());

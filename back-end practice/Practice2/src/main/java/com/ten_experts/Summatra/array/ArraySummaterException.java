@@ -5,6 +5,8 @@ class ArraySummaterException extends Exception {
         super(message);
     }
 
+// check-style ругается на неиспользуемый конструктор, но стоит оставить такой вариант на случай сложных исключений.
+
     ArraySummaterException(final String message, final Exception e) {
         super(message, e);
     }
