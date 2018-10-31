@@ -26,31 +26,21 @@ public class PairSummaterTest {
         }
         assertArrayEquals("Wrong!Should be 7", expectedResultArray,resultArray);
     }
-    @Test(expected = ArraySummaterException.class)
-    public void testPairSummaterEvenArraySize() {
+    @Test(expected = com.ten_experts.Summatra.array.ArraySummaterException.class)
+    public void testPairSummaterOddArraySize() throws ArraySummaterException {
         int[] array = {1, 2, 3};
-        int[] expectedResultArray = {7};
+        int[] expectedResultArray = {5};
         int[] resultArray = new int[1];
-        try {
-            resultArray[0] = this.pairSummater.sum(array);
-        }
-        catch (ArraySummaterException e){
-            System.out.println(e.getMessage());
-        }
-        assertArrayEquals("Wrong!Should be 7", expectedResultArray, resultArray);
+        resultArray[0] = this.pairSummater.sum(array);
+        assertArrayEquals("Wrong!Should be 5", expectedResultArray, resultArray);
     }
 
-    @Test(expected = ArraySummaterException.class)
-    public void testPairSummaterEmptyArray() {
+    @Test(expected = com.ten_experts.Summatra.array.ArraySummaterException.class)
+    public void testPairSummaterEmptyArray() throws ArraySummaterException {
         int[] array = {};
         int[] expectedResultArray = {0};
         int[] resultArray = new int[1];
-        try {
-            resultArray[0] = this.pairSummater.sum(array);
-        }
-        catch (ArraySummaterException e){
-            System.out.println(e.getMessage());
-        }
+        resultArray[0] = this.pairSummater.sum(array);
         assertArrayEquals("Wrong!Should be 0", expectedResultArray, resultArray);
     }
 }

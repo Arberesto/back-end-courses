@@ -1,13 +1,14 @@
 package com.ten_experts.Summatra.array;
 
+/**
+ *Exception for IArraySummater
+ */
 class ArraySummaterException extends Exception {
+    /**
+     *Basic constructor
+     * @param message message of exception for user
+     */
     ArraySummaterException(final String message) {
         super(message);
-    }
-
-// check-style ругается на неиспользуемый конструктор, но стоит оставить такой вариант на случай сложных исключений.
-
-    ArraySummaterException(final String message, final Exception e) {
-        super(message, e);
     }
 }

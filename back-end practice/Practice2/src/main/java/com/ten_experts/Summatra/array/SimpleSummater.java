@@ -12,15 +12,17 @@ package com.ten_experts.Summatra.array;
 public class SimpleSummater implements IArraySummater {
 
     /**
+     * <pre>
      * Get sum of all elements in integer array
      *
-     * <p>Method {@link #sum(int[] array)} sum up  all elements in array, then return value of sum created this way
+     * <p>This method sum up  all elements in array, then return value of sum created this way
+     * </pre>
      * @param array array of integer elements(array won't be changed after sum method)
      * @return            value of summed elements of  array
      * @throws ArraySummaterException throws if array is empty
      * @since             1.0
      */
-    public int sum(int[] array) throws ArraySummaterException {
+    public int sum(final int[] array) throws ArraySummaterException {
         if (array.length == 0) {
             throw new ArraySummaterException("Error!Array is empty!");
         }

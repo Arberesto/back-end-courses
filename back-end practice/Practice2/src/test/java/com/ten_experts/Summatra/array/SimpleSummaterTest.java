@@ -16,7 +16,7 @@ public class SimpleSummaterTest {
     @Test
     public void testSimpleSummaterNormalSituation1() {
         int[] array = {1, 2, 3, 4};
-        int[] expectedResultArray = {7};
+        int[] expectedResultArray = {10};
         int[] resultArray = new int[1];
         try {
             resultArray[0] = this.simpleSummater.sum(array);
@@ -24,33 +24,27 @@ public class SimpleSummaterTest {
         catch (ArraySummaterException e){
             System.out.println(e.getMessage());
         }
-        assertArrayEquals("Wrong!Should be 7", expectedResultArray,resultArray);
+        assertArrayEquals("Wrong!Should be 10", expectedResultArray,resultArray);
     }
-    @Test(expected = ArraySummaterException.class)
-    public void testSimpleSummaterEvenArraySize() {
-        int[] array = {1, 2, 3};
-        int[] expectedResultArray = {7};
+    @Test
+    public void testSimpleSummaterSingleElement() {
+        int[] array = {1};
+        int[] expectedResultArray = {1};
         int[] resultArray = new int[1];
         try {
             resultArray[0] = this.simpleSummater.sum(array);
-        }
-        catch (ArraySummaterException e){
+        } catch (ArraySummaterException e) {
             System.out.println(e.getMessage());
         }
-        assertArrayEquals("Wrong!Should be 7", expectedResultArray, resultArray);
+        assertArrayEquals("Wrong!Should be 1", expectedResultArray, resultArray);
     }
 
-    @Test(expected = ArraySummaterException.class)
-    public void testSimpleSummaterEmptyArray() {
+    @Test(expected = com.ten_experts.Summatra.array.ArraySummaterException.class)
+    public void testSimpleSummaterEmptyArray() throws ArraySummaterException {
         int[] array = {};
         int[] expectedResultArray = {0};
         int[] resultArray = new int[1];
-        try {
-            resultArray[0] = this.simpleSummater.sum(array);
-        }
-        catch (ArraySummaterException e){
-            System.out.println(e.getMessage());
-        }
+        resultArray[0] = this.simpleSummater.sum(array);
         assertArrayEquals("Wrong!Should be 0", expectedResultArray, resultArray);
     }
 }
