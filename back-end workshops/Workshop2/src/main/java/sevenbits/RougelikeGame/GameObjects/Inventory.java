@@ -1,11 +1,19 @@
 package sevenbits.RougelikeGame.GameObjects;
 
-import sevenbits.RougelikeGame.Exceptions.ContainerOverloadException;
+import sevenbits.RougelikeGame.Exceptions.ContainerSpaceException;
+import sevenbits.RougelikeGame.GameObjects.Interfaces.IGameContainer;
+import sevenbits.RougelikeGame.GameObjects.Interfaces.IGameItem;
 
 public class Inventory implements IGameContainer {
-    final int containerSize = 12;
-    IGameItem[] container = new IGameItem[containerSize];
-    int containerEmptySlots = containerSize;
+    private int containerSize;
+    private IGameItem[] container;
+    private int containerEmptySlots;
+
+    public Inventory(int containerSize) {
+        setContainerSize(containerSize);
+        container = new IGameItem[containerSize];
+        containerEmptySlots = containerSize;
+    }
 
     @Override
     public String toString() {
@@ -19,34 +27,38 @@ public class Inventory implements IGameContainer {
         return sb.toString();
     }
 
-    public IGameItem[] getContainer(){
-        return container;
-    }
-
     public int getSize() {
         return container.length;
     }
 
-    public IGameItem getItemFromContainer(int index) {
-        if (container[index]!= null) {
-            containerEmptySlots++;
-            IGameItem item = container[index];
-            container[index] = null;
-            return item;
+    public void setContainerSize(int containerSize) {
+        this.containerSize = containerSize;
+    }
+
+    public IGameItem getItemFromContainer(int index) throws ContainerSpaceException {
+        if (container[index] == null) {
+            throw new ContainerSpaceException("Error!There is no object to get from container!");
         }
-        return null;
+        containerEmptySlots++;
+        IGameItem item = container[index];
+        container[index] = null;
+        return item;
+    }
+
+    public boolean isSlotEmpty(int index) {
+        return container[index] == null;
     }
 
     public int getEmptySlots() {
         return containerEmptySlots;
     }
 
-    public void moveItemIntoContainer(IGameItem item, int index) throws ContainerOverloadException {
+    public void moveItemIntoContainer(IGameItem item, int index) throws ContainerSpaceException {
         if (containerEmptySlots == 0) {
-            throw new ContainerOverloadException("Error!Container can't handle any more items!");
+            throw new ContainerSpaceException("Error!Container can't handle any more items!");
         }
         if (container[index] == null) {
-            throw new ContainerOverloadException("Error!This slot is not empty!");
+            throw new ContainerSpaceException("Error!This slot is not empty!");
         }
         container[index] = item;
         containerEmptySlots--;
