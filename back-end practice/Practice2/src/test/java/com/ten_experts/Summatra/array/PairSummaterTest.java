@@ -2,8 +2,7 @@ package com.ten_experts.Summatra.array;
 
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertArrayEquals;
+import static junit.framework.TestCase.assertEquals;
 
 public class PairSummaterTest {
     private PairSummater pairSummater;
@@ -14,33 +13,19 @@ public class PairSummaterTest {
     }
 
     @Test
-    public void testPairSummaterNormalSituation1() {
+    public void testPairSummaterNormalSituation1() throws ArraySummaterException {
         int[] array = {1, 2, 3, 4};
-        int[] expectedResultArray = {7};
-        int[] resultArray = new int[1];
-        try {
-            resultArray[0] = this.pairSummater.sum(array);
-        }
-        catch (ArraySummaterException e){
-            System.out.println(e.getMessage());
-        }
-        assertArrayEquals("Wrong!Should be 7", expectedResultArray,resultArray);
+        assertEquals("Wrong!Should be 7", 7,this.pairSummater.sum(array));
     }
     @Test(expected = com.ten_experts.Summatra.array.ArraySummaterException.class)
     public void testPairSummaterOddArraySize() throws ArraySummaterException {
         int[] array = {1, 2, 3};
-        int[] expectedResultArray = {5};
-        int[] resultArray = new int[1];
-        resultArray[0] = this.pairSummater.sum(array);
-        assertArrayEquals("Wrong!Should be 5", expectedResultArray, resultArray);
+        assertEquals("Wrong!Should be 5", 5, this.pairSummater.sum(array));
     }
 
     @Test(expected = com.ten_experts.Summatra.array.ArraySummaterException.class)
     public void testPairSummaterEmptyArray() throws ArraySummaterException {
         int[] array = {};
-        int[] expectedResultArray = {0};
-        int[] resultArray = new int[1];
-        resultArray[0] = this.pairSummater.sum(array);
-        assertArrayEquals("Wrong!Should be 0", expectedResultArray, resultArray);
+        assertEquals("Wrong!Should be 0", 0, this.pairSummater.sum(array));
     }
 }

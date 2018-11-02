@@ -1,8 +1,5 @@
 package sevenbits.RougelikeGame.GameObjects.StaticObjects.Items.Valuables;
 
-import sevenbits.RougelikeGame.GameObjects.StaticObjects.Items.IGameItem;
-import sevenbits.RougelikeGame.GameObjects.StaticObjects.IStaticObject;
-
 public class Coin implements ICoin {
     private int x;
     private int y;
