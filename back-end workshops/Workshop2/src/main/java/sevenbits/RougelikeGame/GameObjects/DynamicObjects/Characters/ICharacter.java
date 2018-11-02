@@ -1,4 +1,6 @@
-package sevenbits.RougelikeGame.GameObjects.Interfaces;
+package sevenbits.RougelikeGame.GameObjects.DynamicObjects.Characters;
+
+import sevenbits.RougelikeGame.GameObjects.Containers.IGameContainer;
 
 public interface ICharacter {
     IGameContainer getCharacterContainer();

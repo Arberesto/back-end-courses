@@ -1,12 +1,11 @@
-package sevenbits.RougelikeGame.GameObjects;
+package sevenbits.RougelikeGame.GameObjects.Containers;
 
 import sevenbits.RougelikeGame.Exceptions.ContainerSpaceException;
-import sevenbits.RougelikeGame.GameObjects.Interfaces.IGameContainer;
-import sevenbits.RougelikeGame.GameObjects.Interfaces.IGameItem;
-import sevenbits.RougelikeGame.GameObjects.Interfaces.IStaticObject;
-import sevenbits.RougelikeGame.GameObjects.Items.Armors.Armor;
-import sevenbits.RougelikeGame.GameObjects.Items.Valuables.Coin;
-import sevenbits.RougelikeGame.GameObjects.Items.Weapons.Weapon;
+import sevenbits.RougelikeGame.GameObjects.StaticObjects.Items.IGameItem;
+import sevenbits.RougelikeGame.GameObjects.StaticObjects.IStaticObject;
+import sevenbits.RougelikeGame.GameObjects.StaticObjects.Items.Armors.Armor;
+import sevenbits.RougelikeGame.GameObjects.StaticObjects.Items.Valuables.Coin;
+import sevenbits.RougelikeGame.GameObjects.StaticObjects.Items.Weapons.Weapon;
 
 public class Chest implements IGameContainer, IStaticObject {
     private int containerSize;
@@ -22,27 +21,27 @@ public class Chest implements IGameContainer, IStaticObject {
         container = new IGameItem[containerSize];
         containerEmptySlots = containerSize;
             try{
-            moveItemIntoContainer(new Weapon(x,y,false),containerSize - containerEmptySlots);
+            moveItemIntoContainer(new Weapon(x,y,5),containerSize - containerEmptySlots);
             }
-            catch(ContainerSpaceException e){
+            catch(ContainerSpaceException e) {
                 System.out.println(e.getMessage());
             }
         try{
-            moveItemIntoContainer(new Coin(x,y,false),containerSize - containerEmptySlots);
+            moveItemIntoContainer(new Coin(x,y,4),containerSize - containerEmptySlots);
         }
-        catch(ContainerSpaceException e){
+        catch(ContainerSpaceException e) {
             System.out.println(e.getMessage());
         }
         try{
-            moveItemIntoContainer(new Armor(x,y,false),containerSize - containerEmptySlots);
+            moveItemIntoContainer(new Armor(x,y,6),containerSize - containerEmptySlots);
         }
-        catch(ContainerSpaceException e){
+        catch(ContainerSpaceException e) {
             System.out.println(e.getMessage());
         }
         try{
-            moveItemIntoContainer(new Coin(x,y,false),containerSize - containerEmptySlots);
+            moveItemIntoContainer(new Coin(x,y,3),containerSize - containerEmptySlots);
         }
-        catch(ContainerSpaceException e){
+        catch(ContainerSpaceException e) {
             System.out.println(e.getMessage());
         }
     }

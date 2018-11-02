@@ -1,4 +1,4 @@
-package sevenbits.RougelikeGame.GameObjects.Interfaces;
+package sevenbits.RougelikeGame.GameObjects.DynamicObjects;
 
 public interface IDynamicObject {
     void Move(int x, int y);

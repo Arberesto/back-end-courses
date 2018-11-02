@@ -1,11 +1,12 @@
-package sevenbits.RougelikeGame.GameObjects.Characters;
+package sevenbits.RougelikeGame.GameObjects.DynamicObjects.Characters.Players;
 
+import sevenbits.RougelikeGame.GameObjects.Containers.IGameContainer;
 import sevenbits.RougelikeGame.Exceptions.ContainerSpaceException;
-import sevenbits.RougelikeGame.GameObjects.Interfaces.*;
-import sevenbits.RougelikeGame.GameObjects.Inventory;
-import sevenbits.RougelikeGame.GameObjects.Items.Weapons.Weapon;
+import sevenbits.RougelikeGame.GameObjects.Containers.Inventory;
+import sevenbits.RougelikeGame.GameObjects.StaticObjects.IStaticObject;
+import sevenbits.RougelikeGame.GameObjects.StaticObjects.Items.IGameItem;
 
-public class Player implements ICharacter, IDynamicObject {
+public class Player implements IPlayer {
     private int health;
     private int maxHealth;
     private int x;
@@ -80,8 +81,7 @@ public class Player implements ICharacter, IDynamicObject {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Player's inventory: \n");
-        sb.append(inventory.toString());
+        sb.append("Player's inventory: \n").append(inventory.toString());
         return sb.toString();
     }
 }

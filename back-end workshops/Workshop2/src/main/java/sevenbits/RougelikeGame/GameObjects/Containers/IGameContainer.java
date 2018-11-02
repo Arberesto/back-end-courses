@@ -1,12 +1,12 @@
-package sevenbits.RougelikeGame.GameObjects.Interfaces;
+package sevenbits.RougelikeGame.GameObjects.Containers;
 
 import sevenbits.RougelikeGame.Exceptions.ContainerSpaceException;
+import sevenbits.RougelikeGame.GameObjects.StaticObjects.Items.IGameItem;
 
 public interface IGameContainer {
     int getEmptySlots();
     int getSize();
     void setContainerSize(int containerSize);
     IGameItem getItemFromContainer(int index) throws ContainerSpaceException;
-    boolean isSlotEmpty(int index);
     void moveItemIntoContainer(IGameItem item, int index) throws ContainerSpaceException;
 }

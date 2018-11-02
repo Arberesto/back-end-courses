@@ -1,4 +1,4 @@
-package sevenbits.RougelikeGame.GameObjects.Interfaces;
+package sevenbits.RougelikeGame.GameObjects.StaticObjects;
 
 public interface IStaticObject {
     int getX();

@@ -1,8 +1,7 @@
-package sevenbits.RougelikeGame.GameObjects;
+package sevenbits.RougelikeGame.GameObjects.Containers;
 
 import sevenbits.RougelikeGame.Exceptions.ContainerSpaceException;
-import sevenbits.RougelikeGame.GameObjects.Interfaces.IGameContainer;
-import sevenbits.RougelikeGame.GameObjects.Interfaces.IGameItem;
+import sevenbits.RougelikeGame.GameObjects.StaticObjects.Items.IGameItem;
 
 public class Inventory implements IGameContainer {
     private int containerSize;

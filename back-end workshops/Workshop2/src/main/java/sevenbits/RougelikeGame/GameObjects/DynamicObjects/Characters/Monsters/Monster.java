@@ -1,11 +1,9 @@
-package sevenbits.RougelikeGame.GameObjects.Characters;
+package sevenbits.RougelikeGame.GameObjects.DynamicObjects.Characters.Monsters;
 
-import sevenbits.RougelikeGame.GameObjects.Interfaces.ICharacter;
-import sevenbits.RougelikeGame.GameObjects.Interfaces.IDynamicObject;
-import sevenbits.RougelikeGame.GameObjects.Interfaces.IGameContainer;
-import sevenbits.RougelikeGame.GameObjects.Inventory;
+import sevenbits.RougelikeGame.GameObjects.Containers.IGameContainer;
+import sevenbits.RougelikeGame.GameObjects.Containers.Inventory;
 
-public class Monster implements ICharacter, IDynamicObject {
+public class Monster implements IMonster {
     private int health;
     private int maxHealth;
     private int x;
@@ -71,8 +69,7 @@ public class Monster implements ICharacter, IDynamicObject {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Monster's inventory: \n");
-        sb.append(inventory.toString());
+        sb.append("Monster's inventory: \n").append(inventory.toString());
         return sb.toString();
     }
 }

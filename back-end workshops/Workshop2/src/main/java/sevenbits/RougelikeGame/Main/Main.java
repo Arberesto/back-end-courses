@@ -1,10 +1,10 @@
 package sevenbits.RougelikeGame.Main;
 
+import sevenbits.RougelikeGame.GameObjects.Containers.Chest;
 import sevenbits.RougelikeGame.Exceptions.ContainerSpaceException;
-import sevenbits.RougelikeGame.GameObjects.*;
-import sevenbits.RougelikeGame.GameObjects.Characters.Monster;
-import sevenbits.RougelikeGame.GameObjects.Characters.Player;
-import sevenbits.RougelikeGame.GameObjects.Interfaces.IGameContainer;
+import sevenbits.RougelikeGame.GameObjects.DynamicObjects.Characters.Monsters.Monster;
+import sevenbits.RougelikeGame.GameObjects.DynamicObjects.Characters.Players.Player;
+import sevenbits.RougelikeGame.GameObjects.Containers.IGameContainer;
 
 public class Main {
     public static void main(String[] args) {
