@@ -1,70 +1,70 @@
 package it.sevenbits.workshop3;
 
 import java.io.*;
+import java.nio.charset.Charset;
 import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        try {
+
             System.out.println("Enter full path of directory except last '/' \n");
             Scanner sc = new Scanner(System.in);
-//            int c;
-//            StringBuilder sb = new StringBuilder();
-//            while ((c = System.in.read()) != (int)'\n') {
-//                sb.append((char)c);
-//            }
             String path = sc.nextLine();
-            String testPath = "/home/arcades/IdeaProjects/back-end-courses";
-            FileWriter fileWriter = new FileWriter("./lastDir.txt");
-            writeFilesInDir(testPath, fileWriter);
-//            writeFilesInDir(path);
+            String resultPath = "./lastDir.txt";
+//            String path = "/home/arcades/IdeaProjects/back-end-courses";
+            Dir(path, resultPath);
+    }
+
+    private static void Dir(String dirPath, String resultPath) {
+        try(BufferedWriter fileWriter = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(resultPath),
+                Charset.forName("utf-8")))) {
+            writeFilesInDir(dirPath, fileWriter);
         } catch (IOException e) {
             System.out.println("Exception: \n" + e.getMessage());
         }
     }
 
-    private static void writeFilesInDir (String path, FileWriter fileWriter) throws IOException {
+    private static void writeFilesInDir (String path, BufferedWriter fileWriter) throws IOException {
         File dir = new File(path);
-        BufferedWriter bWriter = new BufferedWriter(fileWriter);
         if (dir.listFiles() != null) {
             int counter = 0;
             for (File i : dir.listFiles()) {
-                bWriter.write(i.getName() + ", ");
+                fileWriter.write(i.getName() + ", ");
                 if (i.isDirectory()) {
-                    bWriter.write(" directory, ");
+                    fileWriter.write(" directory, ");
 
                 } else {
-                    bWriter.write(" file, ");
+                    fileWriter.write(" file, ");
                 }
                 if (i.canRead()) {
-                    bWriter.write(" readable, ");
+                    fileWriter.write(" readable, ");
 
                 } else {
-                    bWriter.write(" non-readable, ");
+                    fileWriter.write(" non-readable, ");
                 }
                 if (i.canWrite()) {
-                    bWriter.write(" writeable, ");
+                    fileWriter.write(" writeable, ");
 
                 } else {
-                    bWriter.write(" non-writeable, ");
+                    fileWriter.write(" non-writeable, ");
                 }
                 if (i.canExecute()) {
-                    bWriter.write(" executable, ");
+                    fileWriter.write(" executable, ");
 
                 } else {
-                    bWriter.write(" non-executable, ");
+                    fileWriter.write(" non-executable, ");
                 }
-                bWriter.write(i.getAbsolutePath() + "\n");
+                fileWriter.write(i.getAbsolutePath() + "\n");
                 counter++;
                 if (counter > 4) {
-                    bWriter.flush();
+                    fileWriter.flush();
                     counter = 0;
                 }
                 if (i.isDirectory()) {
                     writeFilesInDir(i.getAbsolutePath(),fileWriter);
                 }
             }
-            bWriter.flush();
+            fileWriter.flush();
         }
     }
 }
