@@ -13,7 +13,7 @@ import org.slf4j.LoggerFactory;
 
 public class UniqueStorage<T> implements IUniqueStorage<T> {
     private final Logger logger = LoggerFactory.getLogger(UniqueStorage.class);
-    private HashSet<T> hashSet = new HashSet<T>();
+    private HashSet<T> hashSet = new HashSet<>();
 
     /**
      * Add element in storage
@@ -44,9 +44,9 @@ public class UniqueStorage<T> implements IUniqueStorage<T> {
     }
 
     /**
-     *
-     * @param object
-     * @return
+     *Check if object exist in storage
+     * @param object object to check
+     * @return true if exist, else return false
      */
 
     public boolean contains(final T object) {
@@ -65,7 +65,7 @@ public class UniqueStorage<T> implements IUniqueStorage<T> {
 
             @Override
             public boolean hasNext() {
-                return counter < array.length;
+                return counter + 1 < array.length;
             }
 
             @Override
@@ -76,7 +76,9 @@ public class UniqueStorage<T> implements IUniqueStorage<T> {
 
             @Override
             public void remove() {
-                hashSet.remove(this.next());
+                T element = (T) array[counter];
+                hashSet.remove(element);
+                logger.info("Remove element with iterator");
             }
         };
     }
