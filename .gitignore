@@ -33,6 +33,5 @@ CTestTestfile.cmake
 
 #Maven files
 .target/
-./Practice*/target/
 back-end practice/Practice*/target/
 back-end workshops/Workshop*/target/
