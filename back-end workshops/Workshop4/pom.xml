@@ -51,7 +51,7 @@
                             <archive>
                                 <manifest>
                                     <mainClass>
-                                        it.sevenbits.workshop4.Main
+                                        it.sevenbits.courses.sm.Main
                                     </mainClass>
                                 </manifest>
                             </archive>

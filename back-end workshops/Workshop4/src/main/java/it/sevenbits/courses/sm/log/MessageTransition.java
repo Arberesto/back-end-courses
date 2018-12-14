@@ -13,7 +13,7 @@ class MessageTransition {
         StringBuilder sb = new StringBuilder();
         sb.append(this.messageMap.getNextMessage(type).toString());
          if ("MESSAGE".equals(type)) {
-             sb.append(message.substring(0,min(message.length(),20) - 1));
+             sb.append(message);
          }
          return sb.toString();
     }

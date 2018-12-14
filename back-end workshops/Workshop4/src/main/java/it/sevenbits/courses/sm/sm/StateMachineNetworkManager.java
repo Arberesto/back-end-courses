@@ -38,11 +38,10 @@ public class StateMachineNetworkManager implements INetworkManager {
                 while(network.hasPackage()){
                     NetworkPackage p = network.getPackage();
                     container.addNewMessage(p.getMessage());
-                    commandFactory.getCommand(p, currentState).execute();
                     logger.info(messageFormatter.getStringFormatByType(p));
+                    commandFactory.getCommand(p, currentState).execute();
                     currentState = stateTransition.nextState(currentState, p);
                 }
-
                 Thread.sleep(TIMEOUT);
             }
         } catch (InterruptedException e){

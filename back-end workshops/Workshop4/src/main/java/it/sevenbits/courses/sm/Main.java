@@ -9,13 +9,10 @@ public class Main {
 
 
     public static void main(String[] args) throws Exception {
-//        final INetworkManager nm = new SimpleNetworkManager();
         final INetworkManager nm = new StateMachineNetworkManager();
         final INetwork network = new Network(500);
-
         PackagesGenerator packagesGenerator = new PackagesGenerator();
-        Thread createMessagesThread = packagesGenerator.packagesFillerTaskOne(nm,network);
-
+        Thread createMessagesThread = packagesGenerator.packagesFillerTaskTwo(nm,network);
         createMessagesThread.start();
         nm.listen(network);
     }
