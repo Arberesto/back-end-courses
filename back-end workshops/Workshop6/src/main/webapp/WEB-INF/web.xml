@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<web-app>
+    <servlet>
+        <servlet-name>simpleServlet</servlet-name>
+        <servlet-class>it.sevenbits.workshop6Servlet.WorkshopServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>simpleServlet1</servlet-name>
+        <servlet-class>it.sevenbits.workshop6Servlet.WorkshopServlet1</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>simpleServlet</servlet-name>
+        <url-pattern>/</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>simpleServlet1</servlet-name>
+        <url-pattern>/task</url-pattern>
+    </servlet-mapping>
+</web-app>
