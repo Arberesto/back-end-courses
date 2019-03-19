@@ -13,7 +13,7 @@ public class ItemsRepository {
     }
 
     public Item create(String newItem) {
-        if (newItem == null) {
+        if (newItem == null || "".equals(newItem)) {
             return null;
         }
         Item createdItem = new Item(getNewID(),newItem);
